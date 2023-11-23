@@ -2,7 +2,7 @@
 using compiador.processCompiler;
 using compiador.Typos;
 
-string input = "int chicos = 2; int chicas = 6;";
+string input = "int chicos = 5; int chicas = 6; int chicas2 = 6; ";
 Lexer lexer = new Lexer(input);
 List<Token> tokens = lexer.GetTokens();
 

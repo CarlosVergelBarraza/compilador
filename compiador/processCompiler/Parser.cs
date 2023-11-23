@@ -138,6 +138,8 @@ namespace compiador.processCompiler
                     if (current.typeIdentificator is not null)
                         comparate(value.Type, current.typeIdentificator);
                     Consume(TokenType.PuntoComa);
+                    if (_variables.ContainsKey(variableName))
+                        throw new Exception($"ya exite una variable con el nombre {variableName}");
                     _variables.Add(variableName, new KeyValuePair<TokenType, dynamic>(tipoDato, value.Value));
 
                     return value;
@@ -162,7 +164,7 @@ namespace compiador.processCompiler
             {
                 return true;
             }
-            throw new Exception($"El Tipo de dato {evalueType.ToString()}, mira por {comparatedType.ToString()}");
+            throw new Exception($"El Tipo de dato {comparatedType.ToString()}, no puede ser declarado por {evalueType.ToString()}");
         }
 
         private Token GetToken(bool? sum = false)
